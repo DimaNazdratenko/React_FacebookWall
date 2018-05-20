@@ -1,0 +1,5 @@
+@media (--tabletPortrait) {
+    .tabletPortrait {
+        background-color: sienna;
+    }
+}

@@ -1,0 +1,5 @@
+@media (--tabletLandscape) {
+    .tabletLandscape {
+        background-color: rebeccapurple;
+    }
+}

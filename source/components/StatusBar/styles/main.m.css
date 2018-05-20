@@ -1,0 +1,4 @@
+.main {
+    background-color: red;
+    transition: background-color 1s ease-in-out;
+}

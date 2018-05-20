@@ -1,0 +1,5 @@
+@media (--phoneLandscape) {
+    .phoneLandscape {
+        background-color: aquamarine;
+    }
+}
