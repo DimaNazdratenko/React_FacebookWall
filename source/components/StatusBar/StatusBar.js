@@ -7,16 +7,16 @@ import { Consumer } from "components/HOC/withProfile";
 
 // Instruments
 import StylesSimple from "./stylesSimple.m.css";
-import Styles from "./styles";
+// import Styles from "./styles";
 
 export default class StatusBar extends Component {
     render () {
-        const styles = cx(StylesSimple.statusBar, Styles);
+        // const styles = cx(StylesSimple.statusBar, Styles);
 
         return (
             <Consumer>
                 {(context) => (
-                    <section className = { styles }>
+                    <section className = { StylesSimple.statusBar }>
                         <button>
                             <img src = { context.avatar } />
                             <span>{context.currentUserFirstName}</span>
