@@ -55,7 +55,7 @@
         }
 
         &::placeholder {
-            transition: color .4s ease-out;
+            transition: color .4s ease-out, font-size .5s ease;
             color: var(--paletteColor5);
         }
 
