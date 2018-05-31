@@ -42,7 +42,7 @@ export default class Feed extends Component {
 
         const post = {
             id:      getUniqueID(),
-            created: moment().utc(),
+            created: moment().utc().unix(),
             comment,
             likes:   [],
         };
