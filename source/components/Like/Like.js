@@ -83,6 +83,8 @@ export default class Like extends Component {
         } else if (likedByMe) {
             return `You and ${likes.length - 1} others`;
         }
+
+        return likes.length;
     };
 
     render () {
