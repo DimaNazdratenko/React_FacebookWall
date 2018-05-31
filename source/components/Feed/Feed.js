@@ -1,5 +1,6 @@
 // Core
 import React, { Component } from "react";
+import moment from "moment";
 
 // Components
 import StatusBar from "components/StatusBar/StatusBar";
@@ -9,6 +10,7 @@ import Spinner from "components/Spinner/Spinner";
 
 // Instruments
 import Styles from "./styles.m.css";
+import { getUniqueID } from "instruments";
 
 export default class Feed extends Component {
     state = {
@@ -17,6 +19,18 @@ export default class Feed extends Component {
             { id: "456", comment: "Приветик!", created: 1526825076855 }
         ],
         isSpinning: false,
+    };
+
+    _createPost = (comment) => {
+        const post = {
+            id:      getUniqueID(),
+            created: moment().utc(),
+            comment,
+        };
+
+        this.setState(({ posts }) => ({
+            posts: [post, ...posts],
+        }));
     };
 
     render () {
@@ -30,7 +44,7 @@ export default class Feed extends Component {
             <section className = { Styles.feed }>
                 <Spinner isSpinning = { isSpinning } />
                 <StatusBar />
-                <Composer />
+                <Composer _createPost = { this._createPost } />
                 {postsJSX}
             </section>
         );
