@@ -10,34 +10,87 @@ import Spinner from "components/Spinner/Spinner";
 
 // Instruments
 import Styles from "./styles.m.css";
-import { getUniqueID } from "instruments";
+import { getUniqueID, delay } from "instruments";
 
 export default class Feed extends Component {
     state = {
         posts: [
-            { id: "123", comment: "Hi there!", created: 1526825076849 },
-            { id: "456", comment: "Приветик!", created: 1526825076855 }
+            {
+                id:      "123",
+                comment: "Hi there!",
+                created: 1526825076849,
+                likes:   [],
+            },
+            {
+                id:      "456",
+                comment: "Приветик!",
+                created: 1526825076855,
+                likes:   [],
+            }
         ],
         isSpinning: false,
     };
 
-    _createPost = (comment) => {
+    _setPostsFetchingState = (state) => {
+        this.setState({
+            isSpinning: state,
+        });
+    };
+
+    _createPost = async (comment) => {
+        this._setPostsFetchingState(true);
+
         const post = {
             id:      getUniqueID(),
             created: moment().utc(),
             comment,
         };
 
+        await delay(1200);
+
         this.setState(({ posts }) => ({
             posts: [post, ...posts],
         }));
+
+        this._setPostsFetchingState(false);
+    };
+
+    _likePost = async (id) => {
+        const { currentUserFirstName, currentUserLastName } = this.props;
+
+        this._setPostsFetchingState(true);
+
+        await delay(1200);
+
+        const newPosts = this.state.posts.map((post) => {
+            if (post.id === id) {
+                return {
+                    ...post,
+                    likes: [
+                        {
+                            id:        getUniqueID(),
+                            firstName: currentUserFirstName,
+                            lastName:  currentUserLastName,
+                        }
+                    ],
+                };
+            }
+
+            return post;
+        });
+
+        this.setState({
+            posts: newPosts,
+        });
+
+        this._setPostsFetchingState(false);
     };
 
     render () {
         const { posts, isSpinning } = this.state;
 
         const postsJSX = posts.map((post) => {
-            return <Post key = { post.id } { ...post } />;
+            return <Post key = { post.id } { ...post } _likePost = { this._likePost } />;
         });
 
         return (
