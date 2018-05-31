@@ -56,6 +56,20 @@ export default class Feed extends Component {
         this._setPostsFetchingState(false);
     };
 
+    _deletePost = (id) => {
+        const postsAfterDelete = this.state.posts.filter((post) => {
+            if (post.id === id) {
+                return false;
+            }
+
+            return post;
+        });
+
+        this.setState({
+            posts: postsAfterDelete,
+        });
+    };
+
     _likePost = async (id) => {
         const { currentUserFirstName, currentUserLastName } = this.props;
 
@@ -91,7 +105,14 @@ export default class Feed extends Component {
         const { posts, isSpinning } = this.state;
 
         const postsJSX = posts.map((post) => {
-            return <Post key = { post.id } { ...post } _likePost = { this._likePost } />;
+            return (
+                <Post
+                    key = { post.id }
+                    { ...post }
+                    _deletePost = { this._deletePost }
+                    _likePost = { this._likePost }
+                />
+            );
         });
 
         return (
