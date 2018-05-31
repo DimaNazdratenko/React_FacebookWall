@@ -42,9 +42,11 @@ export default class Feed extends Component {
 
         const post = {
             id:      getUniqueID(),
-            created: moment().utc().unix(),
+            created: moment()
+                .utc()
+                .unix(),
             comment,
-            likes:   [],
+            likes: [],
         };
 
         await delay(1200);
@@ -56,7 +58,11 @@ export default class Feed extends Component {
         this._setPostsFetchingState(false);
     };
 
-    _deletePost = (id) => {
+    _deletePost = async (id) => {
+        this._setPostsFetchingState(true);
+
+        await delay(1200);
+
         const postsAfterDelete = this.state.posts.filter((post) => {
             if (post.id === id) {
                 return false;
@@ -68,6 +74,8 @@ export default class Feed extends Component {
         this.setState({
             posts: postsAfterDelete,
         });
+
+        this._setPostsFetchingState(false);
     };
 
     _likePost = async (id) => {
