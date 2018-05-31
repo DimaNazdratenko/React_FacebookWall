@@ -21,11 +21,13 @@ export default class Post extends Component {
 
     render () {
         const { comment, created, _likePost, id, likes } = this.props;
+        console.log("~~~~~~~~ created: ", created);
 
         return (
             <Consumer>
                 {(context) => (
                     <section className = { Styles.post }>
+                        <span className = { Styles.cross } />
                         <img src = { context.avatar } />
                         <a>{`${context.currentUserFirstName} ${
                             context.currentUserLastName
