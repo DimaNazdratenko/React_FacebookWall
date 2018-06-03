@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import moment from "moment";
 
 // Components
+import { withProfile } from "components/HOC/withProfile";
 import StatusBar from "components/StatusBar/StatusBar";
 import Composer from "components/Composer/Composer";
 import Post from "components/Post/Post";
@@ -12,6 +13,7 @@ import Spinner from "components/Spinner/Spinner";
 import Styles from "./styles.m.css";
 import { getUniqueID, delay } from "instruments";
 
+@withProfile
 export default class Feed extends Component {
     state = {
         posts: [

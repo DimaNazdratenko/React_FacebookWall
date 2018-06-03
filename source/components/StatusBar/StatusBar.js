@@ -3,29 +3,31 @@ import React, { Component } from "react";
 import cx from "classnames";
 
 // Components
-import { Consumer } from "components/HOC/withProfile";
+import { withProfile } from "components/HOC/withProfile";
 
 // Instruments
 import StylesSimple from "./stylesSimple.m.css";
 // import Styles from "./styles";
 
+@withProfile
 export default class StatusBar extends Component {
     render () {
         // const styles = cx(StylesSimple.statusBar, Styles);
+        const {
+            avatar,
+            currentUserFirstName,
+            currentUserLastName,
+        } = this.props;
 
         return (
-            <Consumer>
-                {(context) => (
-                    <section className = { StylesSimple.statusBar }>
-                        <button>
-                            <img src = { context.avatar } />
-                            <span>{context.currentUserFirstName}</span>
-                            &nbsp;
-                            <span>{context.currentUserLastName}</span>
-                        </button>
-                    </section>
-                )}
-            </Consumer>
+            <section className = { StylesSimple.statusBar }>
+                <button>
+                    <img src = { avatar } />
+                    <span>{currentUserFirstName}</span>
+                    &nbsp;
+                    <span>{currentUserLastName}</span>
+                </button>
+            </section>
         );
     }
 }
