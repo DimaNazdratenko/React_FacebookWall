@@ -35,7 +35,7 @@ export default class Feed extends Component {
                 `${meta.authorFirstName} ${meta.authorLastName}`
             ) {
                 this.setState(({ posts }) => ({
-                    posts: [createdPost, posts],
+                    posts: [createdPost, ...posts],
                 }));
             }
         });
