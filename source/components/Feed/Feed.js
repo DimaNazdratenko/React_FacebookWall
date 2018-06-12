@@ -22,7 +22,6 @@ export default class Feed extends Component {
     state = {
         posts:      [],
         isSpinning: false,
-        in:         true,
     };
 
     componentDidMount () {
@@ -171,12 +170,6 @@ export default class Feed extends Component {
 
     _animatePostmanEnter = (postman) => {
         fromTo(postman, 1, { x: 300 }, { x: 0 });
-
-        setTimeout(() => {
-            this.setState({
-                in: !this.state.in,
-            });
-        }, 4000);
     };
 
     _animatePostmanExit = (postman) => {
@@ -211,10 +204,10 @@ export default class Feed extends Component {
                 </Transition>
                 <Transition
                     appear
-                    in = { this.state.in }
-                    timeout = { 1000 }
+                    in
+                    timeout = { 5000 }
                     onEnter = { this._animatePostmanEnter }
-                    onExit = { this._animatePostmanExit }>
+                    onEntered = { this._animatePostmanExit }>
                     <Postman />
                 </Transition>
                 {postsJSX}
