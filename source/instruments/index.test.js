@@ -1,5 +1,5 @@
 // Core
-import { sum, delay, getUniqueID } from "./";
+import { sum, delay, getUniqueID, getFullApiUrl } from "./";
 
 describe("instruments:", () => {
     test("sum function should be a function", () => {
@@ -32,8 +32,16 @@ describe("instruments:", () => {
     });
 
     test("getUniqueID function should produce a string of a desired given length", () => {
-        expect(typeof getUniqueID()).toBe('string');
+        expect(typeof getUniqueID()).toBe("string");
         expect(getUniqueID(5)).toHaveLength(5);
         expect(getUniqueID(13)).toHaveLength(13);
+    });
+
+    test("getFullApiUrl function should throw, when called with non-string type as first argument", () => {
+        expect(() => getFullApiUrl(1, "привет")).toThrow();
+    });
+
+    test("getFullApiUrl function should join our arguments", () => {
+        expect(getFullApiUrl('Hello', 'World')).toBe('Hello/World');
     });
 });
