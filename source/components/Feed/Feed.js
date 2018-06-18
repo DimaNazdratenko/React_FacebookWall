@@ -15,6 +15,7 @@ import Composer from "components/Composer/Composer";
 import Post from "components/Post/Post";
 import Spinner from "components/Spinner/Spinner";
 import Postman from "components/Postman/Postman";
+import Counter from "components/Counter/Counter";
 
 // Instruments
 import Styles from "./styles.m.css";
@@ -219,6 +220,7 @@ export default class Feed extends Component {
                     onEnter = { this._animateComposerEnter }>
                     <Composer _createPost = { this._createPost } />
                 </Transition>
+                <Counter count = { postsJSX.length } />
                 <Transition
                     appear
                     in
