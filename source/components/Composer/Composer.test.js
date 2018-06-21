@@ -3,7 +3,9 @@ import React from "react";
 import { Composer } from "./Composer";
 
 const props = {
-    _createPost: jest.fn(),
+    _createPost:          jest.fn(),
+    avatar:               "/images/lisa.c0366.png",
+    currentUserFirstName: "Дима",
 };
 
 const comment = "Merry christmas!";
@@ -18,8 +20,8 @@ const updateState = {
 
 const result = mount(<Composer { ...props } />);
 
-const _submitCommentSpy = jest.spyOn(result.instance(), '_submitComment');
-const _handleFormSubmitSpy = jest.spyOn(result.instance(), '_handleFormSubmit');
+const _submitCommentSpy = jest.spyOn(result.instance(), "_submitComment");
+const _handleFormSubmitSpy = jest.spyOn(result.instance(), "_handleFormSubmit");
 
 describe("Composer component:", () => {
     test('should have 1 "section" element', () => {
@@ -83,12 +85,22 @@ describe("Composer component:", () => {
         expect(result.state()).toEqual(initialState);
     });
 
-    test('_createPost prop should be invoke once after form submission', () => {
+    test("_createPost prop should be invoke once after form submission", () => {
         expect(props._createPost).toHaveBeenCalledTimes(1);
     });
 
-    test('_submitComment and _handleFormSubmit class methods should be invoked once after form is submitted', () => {
+    test("_submitComment and _handleFormSubmit class methods should be invoked once after form is submitted", () => {
         expect(_submitCommentSpy).toHaveBeenCalledTimes(1);
         expect(_handleFormSubmitSpy).toHaveBeenCalledTimes(1);
+    });
+
+    test("img should have correct src", () => {
+        expect(result.find("img").prop("src")).toBe("/images/lisa.c0366.png");
+    });
+
+    test("textarea should have correct placeholder", () => {
+        expect(result.find("textarea").prop("placeholder")).toBe(
+            `What's on your mind, Дима?`
+        );
     });
 });
