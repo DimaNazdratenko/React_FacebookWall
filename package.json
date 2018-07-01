@@ -1,14 +1,14 @@
 {
-    "name": "react-intensive-boilerplate",
+    "name": "React_FacebookWall",
     "version": "1.0.24",
-    "author": "Dima Vakatsiienko <d.vakatsiienko@lectrum.io>",
+    "author": "Dima Nazdratenko <dima.nazdratenko@lectrum.io>",
     "private": true,
     "scripts": {
         "start": "nodemon",
         "build:config": "webpack --config=\"./webpack/webpack.config.babel.js\" --env production --display-reasons",
         "build:dev": "cross-env-shell NODE_ENV=production BUILD_ENV=development npm run build:config",
         "build:prod": "cross-env-shell NODE_ENV=production BUILD_ENV=production npm run build:config",
-        "build:prod-github": "cross-env-shell NODE_ENV=production BUILD_ENV=production REPOSITORY_NAME=react-intensive-boilerplate npm run build:config",
+        "build:prod-github": "cross-env-shell NODE_ENV=production BUILD_ENV=production REPOSITORY_NAME=React_FacebookWall npm run build:config",
         "build:analyze": "run-s build:prod analyze",
         "analyze": "webpack-bundle-analyzer \"./build/build-stats.json\" build",
         "lint": "run-s lint:javascript lint:css",
