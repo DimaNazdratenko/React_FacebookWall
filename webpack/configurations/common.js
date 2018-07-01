@@ -71,7 +71,7 @@ export const generateCommonConfiguration = () => {
             new HtmlWebpackPlugin({
                 inject:      false,
                 template:    HtmlWebpackTemplate,
-                title:       'React intensive boilerplate',
+                title:       'Facebook wall',
                 appMountIds: ['app', 'spinner'],
                 mobile:      true,
             }),
