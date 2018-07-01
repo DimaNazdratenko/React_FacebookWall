@@ -1,5 +1,6 @@
 // Core
 import React from "react";
+import { mount } from "enzyme";
 import { Composer } from "./Composer";
 
 const props = {
