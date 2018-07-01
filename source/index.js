@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 
 // Theme
 import "./theme/init";
+import "./theme/init1";
 
 // App
 import App from "./containers/App/App";
