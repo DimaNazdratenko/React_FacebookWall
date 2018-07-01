@@ -1,7 +1,7 @@
 {
     "name": "React_FacebookWall",
     "version": "1.0.24",
-    "author": "Dima Nazdratenko <dima.nazdratenko@lectrum.io>",
+    "author": "Dima Nazdratenko <dima.nazdratenko@gmail.com>",
     "private": true,
     "scripts": {
         "start": "nodemon",
